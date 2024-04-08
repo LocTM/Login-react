@@ -1,16 +1,24 @@
 
 import './App.css';
-import {Login} from "./components/Login";
+import {Login} from "./pages/Login";
+import {Route, Router, Routes} from "react-router-dom";
+import {Register} from "./pages/Register";
+import {Admin} from "./pages/Admin";
+import {Home} from "./pages/Home";
 
 function App() {
   return (
     <>
-        <Login>Login</Login>
-        <span>User</span>
-        <input type="text" placeholder="user"/>
-         <br/>
-        <span>Password</span>
-        <input type="text" placeholder="password"/>
+        <Routes>
+            <Route path={''} element={<Login/>}></Route>
+            <Route path={'/register'} element={<Register/>}></Route>
+            <Route path={'/admin'} element={<Admin/>}>
+                <Route path={"/admin/user"} element={}></Route>
+            </Route>
+            <Route path={'/home'} element={<Home/>}>
+                <Route path={"/home/orders"}></Route>
+            </Route>
+        </Routes>
     </>
   );
 }
